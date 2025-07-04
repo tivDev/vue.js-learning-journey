@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Data Binding</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    input {
+      padding: 8px;
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="card">
+      <h2>{{ title }}</h2>
+      <img v-bind:src="imageUrl" alt="Vue Logo" width="100" />
+      <p>Welcome, {{ name }}</p>
+      <input v-model="name" placeholder="Enter your name" />
+    </div>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          title: "Vue Data Binding Demo",
+          name: "Tiv",
+          imageUrl: "https://vuejs.org/images/logo.png"
+        }
+      }
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+</html>

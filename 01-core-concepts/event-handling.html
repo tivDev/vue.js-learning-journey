@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Event Handling</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+    }
+    .counter {
+      text-align: center;
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 16px;
+    }
+    input {
+      padding: 8px;
+      margin-top: 10px;
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="counter">
+      <h2>Counter: {{ count }}</h2>
+      <button @click="increment">➕ Increment</button>
+      <button @click="decrement">➖ Decrement</button>
+
+      <h3>Say Hello</h3>
+      <input type="text" v-model="name" placeholder="Enter your name" />
+      <button @click="sayHello">Say Hello</button>
+      <p>{{ greeting }}</p>
+    </div>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          count: 0,
+          name: '',
+          greeting: ''
+        };
+      },
+      methods: {
+        increment() {
+          this.count++;
+        },
+        decrement() {
+          this.count--;
+        },
+        sayHello() {
+          if (this.name.trim()) {
+            this.greeting = `Hello, ${this.name}! 👋`;
+          } else {
+            this.greeting = `Please enter your name first.`;
+          }
+        }
+      }
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+</html>

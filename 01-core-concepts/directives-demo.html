@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Directives Demo</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+    }
+    .card {
+      border: 1px solid #ccc;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="card">
+      <h2>v-if / v-else-if / v-else</h2>
+      <p v-if="score >= 90">Excellent! 🎉</p>
+      <p v-else-if="score >= 60">Good Job! 👍</p>
+      <p v-else>Try harder next time. 💪</p>
+
+      <h2>v-show</h2>
+      <button @click="show = !show">
+        Toggle Message
+      </button>
+      <p v-show="show">Now you see me 👀</p>
+
+      <h2>v-for</h2>
+      <ul>
+        <li v-for="(item, index) in shoppingList" :key="index">
+          {{ index + 1 }}. {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          score: 85,
+          show: true,
+          shoppingList: ["Apples", "Bananas", "Oranges"]
+        };
+      }
+    });
+
+    app.mount("#app");
+  </script>
+</body>
+</html>
